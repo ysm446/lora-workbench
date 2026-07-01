@@ -56,8 +56,13 @@
 ### ローカル資産（models/ ・ runtime/）
 
 - **`models/`**: ローカル LLM モデル（VLM / テキスト LLM の `.gguf` 等）をダウンロードして配置。
-- **`runtime/`**: llama.cpp サーバー本体をダウンロード・インストール。backend が `runtime/`
-  の実行ファイルを起動し、`models/` のモデルをロードして OpenAI 互換エンドポイントを提供する。
+- **`runtime/`**: 外部エンジンのインストール先。engine ごとにサブフォルダを切る。
+  ```
+  runtime/
+    llama.cpp/   # 推論(LLM)サーバー。backend が起動し models/ をロードして OpenAI 互換 API を提供
+    kohya_ss/    # 学習エンジン。専用 venv は runtime/kohya_ss/.venv（backend venv と共有しない）
+    forge/       # WebUI Forge（生成テスト）
+  ```
 - 両フォルダともマシン依存・大容量のため **git 管理外**（`.gitignore`）。初回セットアップ
   （ダウンロード／インストール）を担う仕組みは backend 側に用意する。
 

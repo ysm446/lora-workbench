@@ -47,5 +47,8 @@ epoch / weight をその場で決める**ところまでを閉じたループに
 ## 5. ローカル資産の配置方針
 
 - **ローカル LLM モデル（VLM / テキスト LLM）** は `models/` フォルダへダウンロードして配置。
-- **llama.cpp サーバー（ランタイム）** は `runtime/` フォルダへダウンロード・インストール。
+- **外部エンジン**は `runtime/` フォルダ配下へダウンロード・インストール（engine ごとにサブフォルダ）。
+  - `runtime/llama.cpp/` — 推論(LLM)サーバー
+  - `runtime/kohya_ss/` — 学習エンジン（専用 venv は `runtime/kohya_ss/.venv`）
+  - `runtime/forge/` — WebUI Forge（生成テスト）
 - どちらもマシン依存・大容量のため **git 管理外**（`.gitignore`）とする。
