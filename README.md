@@ -47,6 +47,7 @@ docs/
     goal.md          # 目的・完成形・重視する価値
     plan.md          # 実装方針・アーキテクチャ・優先順位
     progress.md      # 進捗
+frontend/            # UI（Electron + React + TypeScript, Vite）※現在は UI モック
 CLAUDE.md            # Claude Code 向け作業ガイド
 AGENTS.md            # エージェント向けルール
 
@@ -85,6 +86,24 @@ projects/            # プロジェクトごとのデータセット・config・
 - **v2**: Forge 即時テスト ＋ 比較ギャラリー
 - **v3**: config sweep、DoRA／他ネットワーク対応、プリセット管理
 
+## 開発の始め方
+
+前提: Node.js 18+ / Python 3.13。
+
+```bash
+# frontend（現状は UI モック）
+cd frontend
+npm install
+npm run dev            # → http://localhost:5173/
+
+# backend（venv。依存は着手時に導入）
+py -3.13 -m venv .venv                       # 未作成なら
+.venv\Scripts\python -m pip install -U pip
+# 例: .venv\Scripts\python -m pip install fastapi "uvicorn[standard]" pillow imagehash
+```
+
 ## ステータス
 
-初期段階（ドキュメント整備中）。実装は未着手。方針は [`docs/plan/`](docs/plan/) を参照。
+**設計・UI モック段階。** frontend にダミーデータで動く UI モックあり
+（`cd frontend && npm run dev`）。backend / 実データ処理は未着手。次は v0（Import → Tag →
+Curate → Build → TOML）の backend 土台から。進捗は [`docs/plan/progress.md`](docs/plan/progress.md)。

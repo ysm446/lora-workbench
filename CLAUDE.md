@@ -22,6 +22,18 @@
 > コードが追いついていない箇所がある。実態と食い違う場合はコードを正とし、このファイルと
 > `docs/plan/` を更新する。
 
+## 実行環境・開発コマンド
+
+- **frontend** (`frontend/`): Node.js 18+ / Vite + React + TypeScript。現状は UI モック。
+  - `cd frontend && npm install` → `npm run dev`（http://localhost:5173/）
+  - `node_modules/` は git 管理外。
+- **backend**: プロジェクト直下 `.venv`（Python 3.13）。**kohya の venv とは分離**する
+  （kohya は `runtime/kohya_ss/.venv`）。
+  - `py -3.13 -m venv .venv` → `.venv\Scripts\python -m pip install ...`
+  - 依存はまだ未インストール。着手時に `fastapi` / `uvicorn` / `pillow` / `imagehash`、
+    続いて `onnxruntime`（WD14）を導入する。
+- 現在の進捗と次の作業は必ず [`docs/plan/progress.md`](docs/plan/progress.md) を見る。
+
 ## 設計の芯（最重要）
 
 **車輪の再発明をしない。** 外部の重い処理はすべて独立プロセスとして HTTP / subprocess で
