@@ -1,0 +1,6 @@
+# backend (FastAPI) 依存。root の .venv に導入する（kohya venv とは分離）。
+fastapi>=0.115
+uvicorn[standard]>=0.32
+# Import 実装時に追加予定:
+# pillow>=11
+# imagehash>=4.3
